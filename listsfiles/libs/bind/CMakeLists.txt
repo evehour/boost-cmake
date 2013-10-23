@@ -4,6 +4,8 @@
 cmake_minimum_required(VERSION 2.8.11)
 project(BoostBind)
 
+add_subdirectory(test)
+
 add_library(boost_bind INTERFACE)
 add_library(boost::bind ALIAS boost_bind)
 set_property(TARGET boost_bind PROPERTY EXPORT_NAME bind)

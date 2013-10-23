@@ -19,6 +19,8 @@ env:
     - PROJECT=BoostAccumulators
     - PROJECT=BoostAny
     - PROJECT=BoostArray
+    - PROJECT=BoostAssign
+    - PROJECT=BoostBind
 
 before_install:
   - sudo add-apt-repository -y ppa:purplekarrot/cmake

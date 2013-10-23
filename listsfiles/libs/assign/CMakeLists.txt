@@ -4,6 +4,8 @@
 cmake_minimum_required(VERSION 2.8.11)
 project(BoostAssign)
 
+add_subdirectory(test)
+
 add_library(boost_assign INTERFACE)
 add_library(boost::assign ALIAS boost_assign)
 set_property(TARGET boost_assign PROPERTY EXPORT_NAME assign)
