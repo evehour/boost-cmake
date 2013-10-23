@@ -16,7 +16,7 @@
 #     )
 
 #=============================================================================
-# Copyright (C) 2012 Daniel Pfeifer <daniel@pfeifer-mail.de>
+# Copyright (C) 2012-2013 Daniel Pfeifer <daniel@pfeifer-mail.de>
 #
 # Distributed under the Boost Software License, Version 1.0.
 # See accompanying file LICENSE_1_0.txt or copy at
@@ -27,10 +27,6 @@ include(CMakeParseArguments)
 include(detail/test_implementation)
 
 function(ryppl_test_suite)
-  if(RYPPL_DISABLE_TESTS)
-    return()
-  endif()
-
   set(args
     COMPILE
     COMPILE_FAIL
@@ -63,7 +59,6 @@ function(ryppl_test_suite)
   endif()
 
   set(driver ${target}driver)
-  set(TEST_FILES)
 
   # COMPILE tests
   foreach(FILE ${TEST_COMPILE})
@@ -105,7 +100,7 @@ function(ryppl_test_suite)
       endforeach()
       create_test_sourcelist(run_sources ${driver}.cpp ${run_sources})
     endif()
-    add_executable(${driver} EXCLUDE_FROM_ALL
+    add_executable(${driver}
       ${run_sources}
       ${TEST_ADDITIONAL_SOURCES}
       )
@@ -138,13 +133,4 @@ function(ryppl_test_suite)
   foreach(FILE ${TEST_PYTHON_FAIL})
     __boost_add_test_python(1)
   endforeach()
-
-  # add the actual test target
-  string(REPLACE ";" " " TEST_NAMES "${TEST_NAMES}")
-  add_custom_target(${target}
-    COMMAND ${CMAKE_COMMAND}
-      -D "TESTS=${TEST_NAMES}"
-      -P "${__boost_test_summary}"
-    DEPENDS ${TEST_FILES}
-    )
 endfunction()

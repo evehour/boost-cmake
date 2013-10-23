@@ -13,6 +13,7 @@ target_include_directories(boost_type_traits INTERFACE
   )
 
 target_link_libraries(boost_type_traits INTERFACE
+  boost::detail
   boost::mpl
   boost::typeof
   )

@@ -17,6 +17,7 @@ env:
     - CTEST_OUTPUT_ON_FAILURE=1
   matrix:
     - PROJECT=BoostAccumulators
+    - PROJECT=BoostAny
     - PROJECT=BoostArray
 
 before_install:
