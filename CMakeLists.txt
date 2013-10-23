@@ -13,11 +13,14 @@ message(STATUS "Using CMake ${CMAKE_VERSION}")
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Modules")
 find_package(Git REQUIRED)
 
-execute_process(COMMAND
-  ${CMAKE_SOURCE_DIR}/shallow-clone develop
-  https://github.com/boostorg/boost.git
-  ${CMAKE_BINARY_DIR}/boost
-  )
+if(NOT DEFINED ENV{TRAVIS})
+  execute_process(COMMAND
+    ${CMAKE_SOURCE_DIR}/shallow-clone develop
+    https://github.com/boostorg/boost.git
+    ${CMAKE_BINARY_DIR}/boost
+    )
+endif()
+
 file(COPY "listsfiles/" DESTINATION "${CMAKE_BINARY_DIR}/boost")
 
 add_subdirectory("${CMAKE_BINARY_DIR}/boost" "${CMAKE_BINARY_DIR}/boost-build")
