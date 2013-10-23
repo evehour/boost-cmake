@@ -14,7 +14,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Modules")
 find_package(Git REQUIRED)
 
 execute_process(COMMAND
-  ${CMAKE_SOURCE_DIR}/shallow-clone
+  ${CMAKE_SOURCE_DIR}/shallow-clone develop
   https://github.com/boostorg/boost.git
   ${CMAKE_BINARY_DIR}/boost
   )
