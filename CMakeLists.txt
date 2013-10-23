@@ -11,9 +11,9 @@ enable_testing()
 
 message(STATUS "Using CMake ${CMAKE_VERSION}")
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Modules")
-find_package(Git REQUIRED)
 
 if(NOT DEFINED ENV{TRAVIS})
+  find_package(Git REQUIRED)
   execute_process(COMMAND
     ${CMAKE_SOURCE_DIR}/shallow-clone develop
     https://github.com/boostorg/boost.git

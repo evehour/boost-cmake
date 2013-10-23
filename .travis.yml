@@ -13,6 +13,8 @@ compiler:
   - gcc
 
 env:
+  global:
+    - CTEST_OUTPUT_ON_FAILURE=1
   matrix:
     - PROJECT=BoostAccumulators
     - PROJECT=BoostArray
